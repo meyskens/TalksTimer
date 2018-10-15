@@ -1,0 +1,34 @@
+<template>
+  <main-layout>
+    <div class="container">
+      <h2 class="center-align">Welcome to TalkTimer</h2>
+      <p class="center-align">TalkTimer is a remote controllable timer designed to signal the time and messages to presenters</p>
+      <p class="center-align">
+        <a class="waves-effect waves-light btn-large"  v-on:click="newSession"><i class="material-icons left">add_circle</i>Start Session</a>
+      </p>
+    </div>
+  </main-layout>
+</template>
+
+<script>
+import axios from "axios";
+import MainLayout from "../layouts/Main.vue";
+import routes from "../routes";
+
+export default {
+  components: {
+    MainLayout
+  },
+  methods: {
+    newSession: function() {
+      axios.post("http://localhost:8081/session/new").then(response => {
+        // handle success
+        this.$router.push({
+          path: "controller",
+          query: { key: response.data.key }
+        });
+      });
+    }
+  }
+};
+</script>
