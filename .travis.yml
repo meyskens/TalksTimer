@@ -1,4 +1,4 @@
-lang: bash
+language: bash
 sudo: required
 
 services:
