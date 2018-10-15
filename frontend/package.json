@@ -20,7 +20,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
+    "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "node-sass": "^4.9.4",
     "sass-loader": "^7.1.0",
