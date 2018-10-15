@@ -14,3 +14,4 @@ It's far from ready yet, come back later!
 - [ ] Add client server connection state monitoring
 - [ ] Add color times (eg red for 5 minutes left)
 - [ ] Make hosted on a distributed system
+- [ ] Make all options configurable
