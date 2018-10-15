@@ -7,5 +7,5 @@ services:
 script:
   - cd frontend
   - docker build -t maartje/talktimer-frontend ./
-  - cd server
+  - cd ../server
   - docker build -t maartje/talktimer-server ./
