@@ -60,6 +60,7 @@ L:
 
 func updateDuration(key string, duration time.Duration) {
 	emit.Emit(key, duration.Seconds())
+	io.BroadcastTo(key, "timeUpdate", duration.Seconds())
 	_, err := db.Collection("sessions").UpdateOne(context.Background(), bson.NewDocument(bson.EC.String("key", key)), bson.NewDocument(bson.EC.SubDocumentFromElements("$set", bson.EC.Int64("secondsLeft", int64(duration.Seconds())))))
 	if err != nil {
 		log.Println(err)

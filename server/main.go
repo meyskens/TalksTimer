@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/labstack/echo/middleware"
 
@@ -63,33 +64,27 @@ func configureWeb() {
 
 func configureSocket() {
 	var err error
-	io, err = socketio.NewServer([]string{"polling"})
+	io, err = socketio.NewServer(nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	e.Any("/socket.io/", echo.WrapHandler(io))
 	e.Use(socketioCORS)
 
-	io.SetAllowUpgrades(false)
-
+	io.SetPingInterval(time.Second)
 	io.On("connection", func(so socketio.Socket) {
 		log.Println("connection")
-		ctx, cancel := context.WithCancel(context.Background())
-		so.On("subscribe", func(uid string) {
-			log.Println("subscribe")
-		S:
-			for {
-				select {
-				case <-ctx.Done():
-					break S
-				case event := <-emit.Once(uid):
-					so.Emit("timeUpdate", int64(event.Float(0)))
-				}
-			}
-		})
 		so.On("disconnection", func() {
-			cancel()
+			log.Println("disconnection")
 		})
+
+		so.On("subscribe", func(uid string) {
+			log.Println("subscribe", uid)
+			so.Join(uid)
+		})
+	})
+	io.On("error", func(so socketio.Socket, err error) {
+		log.Println("error:", err)
 	})
 }
 
