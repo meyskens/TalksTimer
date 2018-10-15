@@ -1,0 +1,11 @@
+lang: bash
+sudo: required
+
+services:
+  - docker
+
+script:
+  - cd frontend
+  - docker build -t maartje/talktimer-frontend ./
+  - cd server
+  - docker build -t maartje/talktimer-server ./
