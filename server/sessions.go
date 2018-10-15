@@ -95,6 +95,9 @@ func setTime(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "error setting time left"})
 	}
 
+	if cancel, exists := timerCancels[uid]; exists {
+		cancel()
+	}
 	startTimer(uid, seconds)
 
 	return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
