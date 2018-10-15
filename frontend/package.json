@@ -3,18 +3,16 @@
   "description": "Remote controllable timer for talks",
   "author": "Maartje Eyskens <maartje@eyskens.me>",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "dev": "webpack-dev-server --inline --hot --mode=development",
+    "build": "cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules",
     "predeploy": "npm run build",
     "deploy": "surge --project . --domain vue-2-simple-routing-example.surge.sh"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "materialize-css": "^1.0.0",
-    "materializecss-vuejs-component": "^3.1.0",
-    "socket.io": "^1.3.7",
-    "socket.io-client": "^1.3.7",
-    "vue": "^2.3.3",
+    "socket.io-client": "^1.7.4",
+    "vue": "^2.5.17",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -28,9 +26,10 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "surge": "^0.20.1",
-    "vue-loader": "^12.0.3",
+    "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.3.3",
-    "webpack": "^2.7.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
   }
 }

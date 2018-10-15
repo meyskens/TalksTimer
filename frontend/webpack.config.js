@@ -1,56 +1,57 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require("path");
+var webpack = require("webpack");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
-  entry: './src/main.js',
+  entry: "./src/main.js",
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "/dist/",
+    filename: "build.js"
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ["vue-style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.vue$/,
         use: {
-          loader: 'vue-loader'
+          loader: "vue-loader"
         }
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: "babel-loader"
         }
-      },
+      }
     ]
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      vue$: "vue/dist/vue.esm.js"
     }
   },
+  plugins: [
+    // make sure to include the plugin!
+    new VueLoaderPlugin()
+  ],
   devServer: {
     historyApiFallback: true,
     noInfo: true
   },
-  devtool: '#eval-source-map'
-}
+  devtool: "#eval-source-map"
+};
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+if (process.env.NODE_ENV === "production") {
+  module.exports.devtool = "#source-map";
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
+      "process.env": {
         NODE_ENV: '"production"'
       }
     }),
@@ -60,5 +61,5 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.OccurrenceOrderPlugin()
-  ])
+  ]);
 }
