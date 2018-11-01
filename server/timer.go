@@ -13,7 +13,7 @@ var timerContexts = map[string]context.Context{}
 var timerCancels = map[string]context.CancelFunc{}
 
 func startExistingTimers() {
-	c, err := db.Collection("sessions").Find(context.Background(), bson.NewDocument(bson.EC.String("instance", instance)))
+	c, err := db.Collection("sessions").Find(context.Background(), bson.NewDocument(bson.EC.String("instance", conf.Instance)))
 	if err != nil {
 		log.Println(err)
 		return
