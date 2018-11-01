@@ -3,7 +3,7 @@
   "description": "Remote controllable timer for talks",
   "author": "Maartje Eyskens <maartje@eyskens.me>",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --mode=development",
+    "dev": "webpack-dev-server --host 0.0.0.0 --inline --hot --mode=development",
     "build": "cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules",
     "predeploy": "npm run build",
     "deploy": "surge --project . --domain vue-2-simple-routing-example.surge.sh"
