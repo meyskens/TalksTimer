@@ -14,6 +14,7 @@
 import axios from "axios";
 import MainLayout from "../layouts/Main.vue";
 import routes from "../routes";
+import * as Timer from "../api/timer.js";
 
 export default {
   components: {
@@ -21,7 +22,7 @@ export default {
   },
   methods: {
     newSession: function() {
-      axios.post("http://localhost:8081/session/new").then(response => {
+      Timer.create().then(response => {
         // handle success
         if (response.data.instance === "dev-server") {
           this.$router.push({
