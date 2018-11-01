@@ -25,7 +25,7 @@ ARG ARCH
 FROM multiarch/alpine:${ARCH}-edge
 
 RUN apk add --no-cache ca-certificates
-COPY --from=backend /go/src/github.com/meyskens/TalksTimer/talkstimer /opt/talkstimer/talkstimer
+COPY --from=backend /go/src/github.com/meyskens/TalksTimer/server/talkstimer /opt/talkstimer/talkstimer
 COPY --from=frontend /opt/talkstimer/dist/ /opt/talkstimer/www/
 
 CMD talkstimer
