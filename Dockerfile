@@ -12,6 +12,9 @@ FROM golang as backend
 COPY ./ /go/src/github.com/meyskens/TalksTimer/server
 WORKDIR /go/src/github.com/meyskens/TalksTimer/server
 
+ARG GOARCH
+ARG GOARM
+
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} GOARM=${GOARM} go build -a -installsuffix cgo -o talkstimer ./
 
 # Set up deinitive image
