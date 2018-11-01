@@ -23,10 +23,14 @@ export default {
     newSession: function() {
       axios.post("http://localhost:8081/session/new").then(response => {
         // handle success
-        this.$router.push({
-          path: "controller",
-          query: { key: response.data.key }
-        });
+        if (response.data.instance === "dev-server") {
+          this.$router.push({
+            path: "controller",
+            query: { key: response.data.key }
+          });
+        } else {
+          window.location.replace(`https://${response.data.instance}.talkstimer.com/#/controller?key=${response.data.key}`);
+        }
       });
     }
   }
