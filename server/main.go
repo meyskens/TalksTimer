@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"net/http"
 	"strings"
 	"time"
 
@@ -54,9 +53,7 @@ func connectDB() {
 func configureWeb() {
 	e = echo.New()
 	e.Use(middleware.CORS())
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
+	e.Static("/", "www")
 	e.POST("/session/new", newSession)
 	e.GET("/session/:uid", getSession)
 	e.POST("/session/:uid/time", setTime)
