@@ -1,7 +1,7 @@
 ARG ARCH
 FROM node:10 as frontend
 
-COPY ./ /opt/talkstimer
+COPY ./frontend /opt/talkstimer
 WORKDIR /opt/talkstimer
 
 RUN npm i
@@ -9,7 +9,7 @@ RUN npm run build
 
 FROM golang as backend
 
-COPY ./ /go/src/github.com/meyskens/TalksTimer/server
+COPY ./server /go/src/github.com/meyskens/TalksTimer/server
 WORKDIR /go/src/github.com/meyskens/TalksTimer/server
 
 ARG GOARCH
