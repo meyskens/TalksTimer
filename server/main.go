@@ -17,8 +17,10 @@ import (
 )
 
 type config struct {
-	Port     int    `default:"8081"`
-	Instance string `default:"dev-server"`
+	Port         int    `default:"8081"`
+	Instance     string `default:"dev-server"`
+	DBConnection string `default:"mongodb://localhost"`
+	DB           string `default:"test"`
 }
 
 var conf = config{}
@@ -46,7 +48,7 @@ func main() {
 }
 
 func connectDB() {
-	client, err := mongo.NewClient("mongodb://localhost")
+	client, err := mongo.NewClient(conf.DBConnection)
 	if err != nil {
 		log.Fatal(err)
 	}
