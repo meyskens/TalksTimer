@@ -101,9 +101,10 @@ export default {
   },
   methods: {
     setTimer: function() {
-      let time = this.set.seconds
-      time += this.set.minutes * 60
-      time += this.set.hours * 60 * 60
+      let time = parseInt(this.set.seconds)
+      console.log(this.set)
+      time += parseInt(this.set.minutes) * 60
+      time += parseInt(this.set.hours) * 60 * 60
 
       Timer.setTimer(this.key, time)
     },
