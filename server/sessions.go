@@ -85,6 +85,9 @@ func setTime(c echo.Context) error {
 	if reflect.TypeOf(body.Seconds).Kind() == reflect.Int {
 		seconds = body.Seconds.(int64)
 	}
+	if reflect.TypeOf(body.Seconds).Kind() == reflect.Float64 {
+		seconds = int64(body.Seconds.(float64))
+	}
 	if reflect.TypeOf(body.Seconds).Kind() == reflect.String {
 		seconds, _ = strconv.ParseInt(body.Seconds.(string), 10, 64)
 	}
