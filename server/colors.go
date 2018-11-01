@@ -46,6 +46,9 @@ func setColors(c echo.Context) error {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "could not create database record"})
 	}
+
+	io.BroadcastTo(uid, "newColors", true)
+
 	return c.JSON(http.StatusOK, colors)
 }
 
@@ -57,8 +60,6 @@ func getColors(c echo.Context) error {
 
 	colors := Colors{}
 	db.Collection("colors").FindOne(context.Background(), bson.NewDocument(bson.EC.String("sessionKey", uid))).Decode(&colors)
-
-	io.BroadcastTo(uid, "newColors", nil)
 
 	return c.JSON(http.StatusOK, colors)
 }

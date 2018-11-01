@@ -87,7 +87,7 @@ export default {
           this.secondsLeft = time;
           this.emitColor()
         });
-        this.socket.on("newColors", time => {
+        this.socket.on("newColors", () => {
           this.getColors()
         });
         if (this.showMessages) {
