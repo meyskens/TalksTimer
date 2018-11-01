@@ -4,6 +4,9 @@ FROM node:10 as frontend
 COPY ./frontend /opt/talkstimer
 WORKDIR /opt/talkstimer
 
+RUN rm -f src/api/const.js
+RUN mv src/api/const.js.prod src/api/const.js
+
 RUN npm i
 RUN npm run build
 
