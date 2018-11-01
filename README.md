@@ -12,6 +12,6 @@ It's far from ready yet, come back later!
 - [x] Add a frontend
 - [x] Add messages
 - [ ] Add client server connection state monitoring
-- [ ] Add color times (eg red for 5 minutes left)
+- [x] Add color times (eg red for 5 minutes left)
 - [ ] Make hosted on a distributed system
 - [ ] Make all options configurable
