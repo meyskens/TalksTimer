@@ -26,7 +26,7 @@ FROM multiarch/alpine:${ARCH}-edge
 
 RUN apk add --no-cache ca-certificates
 COPY --from=backend /go/src/github.com/meyskens/TalksTimer/server/talkstimer /opt/talkstimer/talkstimer
-COPY --from=frontend /opt/talkstimer/dist/ /opt/talkstimer/www/
+COPY --from=frontend /opt/talkstimer/ /opt/talkstimer/www/
 
 WORKDIR /opt/talkstimer
 CMD /opt/talkstimer/talkstimer
