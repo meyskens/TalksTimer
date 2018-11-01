@@ -28,4 +28,5 @@ RUN apk add --no-cache ca-certificates
 COPY --from=backend /go/src/github.com/meyskens/TalksTimer/server/talkstimer /opt/talkstimer/talkstimer
 COPY --from=frontend /opt/talkstimer/dist/ /opt/talkstimer/www/
 
-CMD talkstimer
+WORKDIR /opt/talkstimer
+CMD /opt/talkstimer/talkstimer
