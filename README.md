@@ -9,8 +9,8 @@ TalkTimer counts down on the server side, so it will continue should the control
 It's far from ready yet, come back later!
 
 ## To Do
-- [ ] Add a frontend
-- [ ] Add messages
+- [x] Add a frontend
+- [x] Add messages
 - [ ] Add client server connection state monitoring
 - [ ] Add color times (eg red for 5 minutes left)
 - [ ] Make hosted on a distributed system
