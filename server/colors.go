@@ -6,8 +6,6 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/davecgh/go-spew/spew"
-
 	"github.com/labstack/echo"
 	"github.com/mongodb/mongo-go-driver/bson"
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
@@ -35,7 +33,7 @@ func setColors(c echo.Context) error {
 
 	colors := Colors{}
 	c.Bind(&colors)
-	spew.Dump(colors)
+
 	colors.ID = objectid.NilObjectID
 	colors.SessionKey = uid
 	colors.Created = time.Now()
