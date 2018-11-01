@@ -13,11 +13,13 @@ func setupIndexes() {
 	options.Background(true)
 	EnsureIndex(context.Background(), db.Collection("sessions"), []string{"key"}, options)
 	EnsureIndex(context.Background(), db.Collection("sessions"), []string{"key", "instance"}, options)
+	EnsureIndex(context.Background(), db.Collection("colors"), []string{"key"}, options)
 
 	expireOpts := mongo.NewIndexOptionsBuilder()
 	expireOpts.Background(true)
 	expireOpts.ExpireAfterSeconds(2592000) //30 days
 	EnsureIndex(context.Background(), db.Collection("sessions"), []string{"created"}, expireOpts)
+	EnsureIndex(context.Background(), db.Collection("colors"), []string{"created"}, expireOpts)
 }
 
 // Thanks to https://gist.github.com/bweston92/5a796e15a6d7f436755795018dea9c1a

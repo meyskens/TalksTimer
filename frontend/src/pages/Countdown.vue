@@ -13,6 +13,7 @@
 import io from "socket.io-client";
 import { URL } from "../api/const.js"
 import * as Timer from "../api/timer.js";
+import * as Colors from "../api/colors.js";
 
 let formatNum = num => {
   if (num < 10) {
@@ -35,11 +36,28 @@ export default {
       socket: null,
       message: "",
       messageClearTimer: null,
+      colors: [],
     };
   },
   methods: {
     clearMessage: function() {
       this.message = ""
+    },
+    getColors: function(){
+      Colors.get(this.sessionKey).then(response => {
+        this.colors = response.data.options || []
+      })
+    },
+    emitColor: function() {
+      let current = ""
+      let time = Infinity
+      for (let color of this.colors) {
+        if (color.from < time && color.from >= this.secondsLeft) {
+          current = color.color
+          time = color.from
+        }
+      }
+      this.$emit('color', current)
     }
   },
   computed: {
@@ -56,6 +74,7 @@ export default {
   },
   mounted: function() {
     Timer.get(this.sessionKey).then(response => {
+        this.getColors()
         this.session = response.data;
         this.secondsLeft = this.session.secondsLeft;
         this.socket = io(URL);
@@ -66,6 +85,10 @@ export default {
         });
         this.socket.on("timeUpdate", time => {
           this.secondsLeft = time;
+          this.emitColor()
+        });
+        this.socket.on("newColors", time => {
+          this.getColors()
         });
         if (this.showMessages) {
           this.socket.on("message", message => {

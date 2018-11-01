@@ -13,6 +13,7 @@
     "materialize-css": "^1.0.0",
     "socket.io-client": "^1.7.4",
     "vue": "^2.5.17",
+    "vue-color": "^2.7.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
