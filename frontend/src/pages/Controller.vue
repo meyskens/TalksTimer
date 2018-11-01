@@ -65,6 +65,7 @@
 .countdown {
   font-size: 4em;
   text-align: center;
+  font-family: 'Roboto Mono', monospace;
 }
 </style>
 
