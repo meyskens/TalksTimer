@@ -10,19 +10,30 @@ import (
 	"github.com/labstack/echo/middleware"
 
 	socketio "github.com/googollee/go-socket.io"
+	"github.com/kelseyhightower/envconfig"
 	"github.com/labstack/echo"
 	"github.com/mongodb/mongo-go-driver/mongo"
 	"github.com/olebedev/emitter"
 )
+
+type config struct {
+	Port     int    `default:"8081"`
+	Instance string `default:"dev-server"`
+}
+
+var conf = config{}
 
 var db *mongo.Database
 var e *echo.Echo
 var io *socketio.Server
 var emit = emitter.Emitter{}
 
-var instance = "dev-server"
-
 func main() {
+	err := envconfig.Process("talkstimer", &conf)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
 	connectDB()
 	setupIndexes()
 
@@ -31,7 +42,7 @@ func main() {
 
 	startExistingTimers()
 
-	e.Logger.Fatal(e.Start(":8081"))
+	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", conf.Port)))
 }
 
 func connectDB() {

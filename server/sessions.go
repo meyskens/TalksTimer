@@ -32,7 +32,7 @@ func newSession(c echo.Context) error {
 	}
 	session := Session{
 		Key:      uid.String(),
-		Instance: instance,
+		Instance: conf.Instance,
 		Created:  time.Now(),
 	}
 	_, err = db.Collection("sessions").InsertOne(context.Background(), session)
