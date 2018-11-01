@@ -17,7 +17,6 @@
 <style lang="scss">
 .countdownView {
   font-size: 10em;
-  font-family: 'Roboto Mono', monospace;
 }
 </style>
 

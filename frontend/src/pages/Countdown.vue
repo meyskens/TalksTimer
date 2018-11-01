@@ -1,6 +1,13 @@
 <template>
-    <span><span v-if="!message">{{timeStamp}}</span><span v-if="message">{{message}}</span></span>
+    <span><span v-if="!message" class="numbers">{{timeStamp}}</span><span v-if="message">{{message}}</span></span>
 </template>
+
+<style lang="scss">
+.numbers {
+  font-family: 'Roboto Mono', monospace;
+}
+</style>
+
 
 <script>
 import io from "socket.io-client";
