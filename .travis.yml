@@ -13,6 +13,8 @@ env:
       - ARCH=armhf GOARCH=arm   GOARM=6 QEMU_ARCH=arm
       - ARCH=arm64 GOARCH=arm64 GOARM=6 QEMU_ARCH=aarch64
 
+before_install:
+  - docker run --rm --privileged multiarch/qemu-user-static:register
 script:
   - docker build --build-arg ARCH="$ARCH" --build-arg GOARCH="$GOARCH" --build-arg GOARM="$GOARM" -t $DOCKER_REPO:$ARCH-$TRAVIS_COMMIT ./
 
