@@ -60,6 +60,7 @@ func configureWeb() {
 	e.POST("/session/new", newSession)
 	e.GET("/session/:uid", getSession)
 	e.POST("/session/:uid/time", setTime)
+	e.POST("/session/:uid/message", sendMessage)
 }
 
 func configureSocket() {

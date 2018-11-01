@@ -1,10 +1,11 @@
 <template>
-    <span>{{timeStamp}}</span>
+    <span><span v-if="!message">{{timeStamp}}</span><span v-if="message">{{message}}</span></span>
 </template>
 
 <script>
-import axios from "axios";
 import io from "socket.io-client";
+import { URL } from "../api/const.js"
+import * as Timer from "../api/timer.js";
 
 let formatNum = num => {
   if (num < 10) {
@@ -14,15 +15,25 @@ let formatNum = num => {
 };
 
 export default {
-  props: ["sessionKey"],
+  props: {
+    sessionKey: String,
+    showMessages: Boolean,
+  },
   data: function() {
     return {
       session: {},
       secondsLeft: 0,
       connected: false,
       error: null,
-      socket: null
+      socket: null,
+      message: "",
+      messageClearTimer: null,
     };
+  },
+  methods: {
+    clearMessage: function() {
+      this.message = ""
+    }
   },
   computed: {
     timeStamp: function() {
@@ -37,12 +48,10 @@ export default {
     }
   },
   mounted: function() {
-    axios
-      .get(`http://localhost:8081/session/${this.sessionKey}`)
-      .then(response => {
+    Timer.get(this.sessionKey).then(response => {
         this.session = response.data;
         this.secondsLeft = this.session.secondsLeft;
-        this.socket = io("http://localhost:8081");
+        this.socket = io(URL);
         this.socket.on("connect", () => {
           console.log("connect");
           this.connected = true;
@@ -51,6 +60,13 @@ export default {
         this.socket.on("timeUpdate", time => {
           this.secondsLeft = time;
         });
+        if (this.showMessages) {
+          this.socket.on("message", message => {
+            this.message = message;
+            clearTimeout(this.messageClearTimer)
+            this.messageClearTimer = setTimeout(this.clearMessage, 10000)
+          });
+        }
         this.socket.on("disconnect", () => {
           console.log("disconnect");
           this.connected = false;

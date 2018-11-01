@@ -1,6 +1,13 @@
 <template>
   <main-layout>
     <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+          <span>Open the client using: <a v-bind:href="clientURL" target="_new">{{clientURL}}</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col s12 m6">
         <div class="card">
           <div class="card-content">
@@ -34,6 +41,22 @@
           </div>
         </div>
       </div>
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Show Message</span>
+            <div>
+              <label for="message">Message</label>
+              <input id="message" type="text" v-model="messageField">
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="#" @click.prevent="clearMessage()">Clear</a>
+            <a href="#" @click.prevent="sendMessage('Repeat the quesion!')">Repeat Question</a>
+            <a href="#" @click.prevent="sendMessage(messageField)">Send</a>
+          </div>
+        </div>
+      </div>
     </div>    
   </main-layout>
 </template>
@@ -49,11 +72,17 @@
 import MainLayout from "../layouts/Main.vue";
 import Countdown from "./Countdown.vue";
 import * as Timer from "../api/timer.js"
+import * as Messages from "../api/messages.js"
 
 export default {
   components: {
     MainLayout,
     Countdown,
+  },
+  computed: {
+    clientURL: function() {
+      return `${window.location.origin}/#/viewer/?key=${this.key}`
+    }
   },
   data: function() {
     return {
@@ -62,7 +91,8 @@ export default {
         hours: 0,
         minutes: 0,
         seconds: 0,
-      }
+      },
+      messageField: "",
     }
   },
   mounted: function() {
@@ -78,7 +108,13 @@ export default {
     },
     resetTimer : function() {
       Timer.setTimer(this.key, 0)
-    }
+    },
+    sendMessage : function(message) {
+      Messages.send(this.key, message)
+    },
+    clearMessage : function() {
+      Messages.send(this.key, "")
+    },
   }
 };
 </script>
