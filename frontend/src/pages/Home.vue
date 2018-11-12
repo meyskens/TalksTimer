@@ -1,8 +1,8 @@
 <template>
   <main-layout>
     <div class="container">
-      <h2 class="center-align">Welcome to TalkTimer</h2>
-      <p class="center-align">TalkTimer is a remote controllable timer designed to signal the time and messages to presenters</p>
+      <h2 class="center-align">Welcome to TalksTimer</h2>
+      <p class="center-align">TalksTimer is a remote controllable timer designed to signal the time and messages to presenters</p>
       <p class="center-align">
         <a class="waves-effect waves-light btn-large"  v-on:click="newSession"><i class="material-icons left">add_circle</i>Start Session</a>
       </p>

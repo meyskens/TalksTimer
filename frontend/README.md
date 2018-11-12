@@ -1,4 +1,4 @@
-# TalkTimer frontend
+# TalksTimer frontend
 
 ## Build Setup
 
