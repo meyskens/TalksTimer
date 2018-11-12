@@ -35,6 +35,7 @@ export default {
       error: null,
       socket: null,
       message: "",
+      messageColor: "",
       messageClearTimer: null,
       colors: [],
     };
@@ -42,6 +43,8 @@ export default {
   methods: {
     clearMessage: function() {
       this.message = ""
+      this.messageColor = ""
+      this.emitColor()
     },
     getColors: function(){
       Colors.get(this.sessionKey).then(response => {
@@ -49,6 +52,9 @@ export default {
       })
     },
     emitColor: function() {
+      if (this.messageColor) {
+        return this.$emit('color', this.messageColor)
+      }
       let current = ""
       let time = Infinity
       for (let color of this.colors) {
@@ -92,7 +98,10 @@ export default {
         });
         if (this.showMessages) {
           this.socket.on("message", message => {
-            this.message = message;
+            console.log(message)
+            this.message = message.message
+            this.messageColor = message.color
+            this.emitColor()
             clearTimeout(this.messageClearTimer)
             this.messageClearTimer = setTimeout(this.clearMessage, 10000)
           });

@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"reflect"
@@ -103,35 +102,6 @@ func setTime(c echo.Context) error {
 		cancel()
 	}
 	startTimer(uid, seconds)
-
-	return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
-}
-
-type sendMessageBody struct {
-	Message string `json:"message" form:"message" query:"message"`
-}
-
-func sendMessage(c echo.Context) error {
-	uid := c.Param("uid")
-	if uid == "" {
-		return c.JSON(http.StatusBadRequest, map[string]string{"error": "no uid given"})
-	}
-
-	count, err := db.Collection("sessions").Count(context.Background(), bson.NewDocument(bson.EC.String("key", uid)))
-	if err != nil {
-		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "error looking up session"})
-	}
-	if count < 1 {
-		return c.JSON(http.StatusNotFound, map[string]string{"error": "session not found"})
-	}
-
-	body := sendMessageBody{}
-	c.Bind(&body)
-
-	io.BroadcastTo(uid, "message", body.Message)
-
-	fmt.Println(uid, body.Message)
 
 	return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 }

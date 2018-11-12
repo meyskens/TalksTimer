@@ -73,6 +73,8 @@ func configureWeb() {
 	e.POST("/session/:uid/message", sendMessage)
 	e.GET("/session/:uid/colors", getColors)
 	e.POST("/session/:uid/colors", setColors)
+	e.GET("/session/:uid/messages", getMessages)
+	e.POST("/session/:uid/messages", setMessages)
 }
 
 func configureSocket() {
