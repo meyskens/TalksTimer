@@ -6,7 +6,11 @@ It starts by creating a session, this session gives you a key and the ability to
 TalksTimer counts down on the server side, so it will continue should the controller/client disconnect.
 
 ## How to use
-It's far from ready yet, come back later!
+### Hosted
+I host an instance at [https://talkstimer.com](https://talkstimer.com). It is free to use for everyone! If you happen to want to use this at a big (paid) conference I kindly ask you to email me, I pay all server costs out of my own pocket.
+
+### Locally
+(TODO)
 
 ## To Do
 - [x] Add a frontend
