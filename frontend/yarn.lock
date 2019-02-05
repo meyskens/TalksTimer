@@ -5601,13 +5601,9 @@ wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webpack-cli-scripts@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/webpack-cli-scripts/-/webpack-cli-scripts-1.0.2.tgz#d03894217830e2b1e3e6fdbc2b175059942d94f6"
-
-webpack-cli@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.2.2.tgz#1e6a638ff81d491d0bec7db11910a55450e4189a"
+webpack-cli@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.2.3.tgz#13653549adfd8ccd920ad7be1ef868bacc22e346"
   dependencies:
     chalk "^2.4.1"
     cross-spawn "^6.0.5"
@@ -5619,7 +5615,6 @@ webpack-cli@^3.2.2:
     loader-utils "^1.1.0"
     supports-color "^5.5.0"
     v8-compile-cache "^2.0.2"
-    webpack-cli-scripts "^1.0.2"
     yargs "^12.0.4"
 
 webpack-dev-middleware@3.4.0:
