@@ -12,7 +12,7 @@
     "axios": "^0.18.0",
     "jquery": "^3.3.1",
     "materialize-css": "^1.0.0",
-    "socket.io-client": "^1.7.4",
+    "socket.io-client": "^2.2.0",
     "vue": "^2.6.6",
     "vue-color": "^2.7.0",
     "vue-router": "^3.0.2"
