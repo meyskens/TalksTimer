@@ -1,4 +1,4 @@
-ARG ARCH
+ARG ARCH=amd64
 FROM node:10 as frontend
 
 COPY ./frontend /opt/talkstimer
@@ -21,7 +21,7 @@ ARG GOARM
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} GOARM=${GOARM} go build -a -installsuffix cgo -o talkstimer ./
 
 # Set up deinitive image
-ARG ARCH
+ARG ARCH=amd64
 FROM multiarch/alpine:${ARCH}-edge
 
 RUN apk add --no-cache ca-certificates

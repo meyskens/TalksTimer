@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "8081:8081"
+    environment:
+      - TALKSTIMER_DBCONNECTION=mongodb://mongodb
+    depends_on:
+      - mongodb
+    links:
+      - mongodb:mongodb
+  mongodb:
+    image: mongo
