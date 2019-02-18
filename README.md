@@ -10,7 +10,10 @@ TalksTimer counts down on the server side, so it will continue should the contro
 I host an instance at [https://talkstimer.com](https://talkstimer.com). It is free to use for everyone! If you happen to want to use this at a big (paid) conference I kindly ask you to email me, I pay all server costs out of my own pocket.
 
 ### Locally
-(TODO)
+1) Get the latest [Docker Compose](https://docs.docker.com/compose/install/)
+2) Clone this repo
+3) Run `docker-compose up` in the root of this repo
+4) Open `http://localhost:8081`
 
 ## To Do
 - [x] Add a frontend
