@@ -4900,9 +4900,9 @@ surge-ignore@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/surge-ignore/-/surge-ignore-0.2.0.tgz#5a7f8a20a71188cf9e75a2cfe8eb182de90daf3b"
 
-surge@^0.21.0:
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/surge/-/surge-0.21.0.tgz#1297a650bcf33ac4c29a1c69b44997ff715206be"
+surge@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/surge/-/surge-0.21.1.tgz#a2a00ac52a7fc88aa552ab6ff61b227c9445709d"
   dependencies:
     cli-table3 "^0.5.1"
     fstream-ignore "^1.0.5"
