@@ -30,7 +30,7 @@
     "surge": "^0.21.0",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.39.0",
+    "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   }
