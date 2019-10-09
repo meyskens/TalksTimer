@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
     "cross-env": "^5.2.1",
     "css-loader": "^2.1.1",
