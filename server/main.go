@@ -60,7 +60,7 @@ func connectDB() {
 
 	//go testEmit()
 
-	db = client.Database("test")
+	db = client.Database(conf.DB)
 }
 
 func configureWeb() {
