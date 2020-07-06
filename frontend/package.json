@@ -27,7 +27,7 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^0.23.1",
-    "surge": "^0.21.3",
+    "surge": "^0.21.5",
     "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0",
