@@ -13,7 +13,7 @@
     "jquery": "^3.5.1",
     "materialize-css": "^1.0.0",
     "socket.io-client": "^1.7.4",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-color": "^2.7.1",
     "vue-router": "^3.4.3"
   },
@@ -29,7 +29,7 @@
     "style-loader": "^0.23.1",
     "surge": "^0.21.3",
     "vue-loader": "^15.9.3",
-    "vue-template-compiler": "^2.6.11",
+    "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
