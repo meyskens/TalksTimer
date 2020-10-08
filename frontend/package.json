@@ -15,7 +15,7 @@
     "socket.io-client": "^1.7.4",
     "vue": "^2.6.12",
     "vue-color": "^2.7.1",
-    "vue-router": "^3.4.5"
+    "vue-router": "^3.4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
