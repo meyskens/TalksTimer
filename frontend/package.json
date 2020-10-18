@@ -21,7 +21,7 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "babel-loader": "^8.1.0",
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.2",
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
     "node-sass": "^4.14.1",
