@@ -28,7 +28,7 @@
     "sass-loader": "^8.0.2",
     "style-loader": "^0.23.1",
     "surge": "^0.21.3",
-    "vue-loader": "^15.9.3",
+    "vue-loader": "^15.9.4",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
