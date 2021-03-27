@@ -1,4 +1,4 @@
-FROM node:15 as frontend
+FROM node:14 as frontend
 
 COPY ./frontend /opt/talkstimer
 WORKDIR /opt/talkstimer
@@ -15,7 +15,7 @@ COPY ./server /go/src/github.com/meyskens/TalksTimer/server
 WORKDIR /go/src/github.com/meyskens/TalksTimer/server
 
 
-RUN CGO_ENABLED=0 go build -a -installsuffix cgo -o talkstimer ./
+RUN CGO_ENABLED=0 go build -o talkstimer ./
 
 FROM alpine:3.13
 
