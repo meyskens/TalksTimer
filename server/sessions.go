@@ -11,7 +11,7 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
 
 	"github.com/google/uuid"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/mongodb/mongo-go-driver/bson"
 )
 

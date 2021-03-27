@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4/middleware"
 
 	socketio "github.com/googollee/go-socket.io"
 	"github.com/kelseyhightower/envconfig"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/mongodb/mongo-go-driver/mongo"
 	"github.com/olebedev/emitter"
 )
