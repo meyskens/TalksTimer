@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+          # Need all the history for git describe --tags to work
+          fetch-depth: 0
     - name: Install buildx
       run: |
           sudo apt-get update
