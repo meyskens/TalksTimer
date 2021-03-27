@@ -1,5 +1,4 @@
-ARG ARCH=amd64
-FROM node:10 as frontend
+FROM node:15 as frontend
 
 COPY ./frontend /opt/talkstimer
 WORKDIR /opt/talkstimer
@@ -10,19 +9,15 @@ RUN mv src/api/const.js.prod src/api/const.js
 RUN npm i
 RUN npm run build
 
-FROM golang as backend
+FROM golang:alpine as backend
 
 COPY ./server /go/src/github.com/meyskens/TalksTimer/server
 WORKDIR /go/src/github.com/meyskens/TalksTimer/server
 
-ARG GOARCH
-ARG GOARM
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} GOARM=${GOARM} go build -a -installsuffix cgo -o talkstimer ./
+RUN CGO_ENABLED=0 go build -a -installsuffix cgo -o talkstimer ./
 
-# Set up deinitive image
-ARG ARCH=amd64
-FROM multiarch/alpine:${ARCH}-edge
+FROM alpine:3.13
 
 RUN apk add --no-cache ca-certificates
 COPY --from=backend /go/src/github.com/meyskens/TalksTimer/server/talkstimer /opt/talkstimer/talkstimer
