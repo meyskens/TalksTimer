@@ -9,5 +9,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: docker build -t ghcr.io/meyskens/talkstimer:$(git describe --tag)
+      run: docker build -t ghcr.io/meyskens/talkstimer:$(git describe --tag) .
      
