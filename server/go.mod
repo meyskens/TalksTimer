@@ -11,8 +11,7 @@ require (
 	github.com/googollee/go-socket.io v0.0.0-20180921171217-25e1f67559cf
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/kelseyhightower/envconfig v1.3.0
-	github.com/labstack/echo v3.3.10+incompatible
-	github.com/labstack/echo/v4 v4.2.1
+	github.com/labstack/echo/v4 v4.9.0
 	github.com/mongodb/mongo-go-driver v0.0.16
 	github.com/olebedev/emitter v0.0.0-20171221095905-68bb25b251f6
 	github.com/pkg/errors v0.8.0
